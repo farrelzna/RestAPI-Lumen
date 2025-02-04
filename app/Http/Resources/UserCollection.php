@@ -5,7 +5,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 // format dari resource
 
-class StuffColection extends ResourceCollection
+class UserCollection extends ResourceCollection
 {
     public function toArray($request)
     {

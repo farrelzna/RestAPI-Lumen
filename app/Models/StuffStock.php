@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class StuffStock extends Model
 {
-    use HasFactory;
-    use HasUuids;
-    use SoftDeletes;
+    use HasFactory, HasUuids, SoftDeletes;
 
     protected $fillable =  ['stuff_id', 'total_available', 'total_defec'];
+
+    public function stuff() {
+        return $this->belongsTo(Stuff::class);
+    }
 }

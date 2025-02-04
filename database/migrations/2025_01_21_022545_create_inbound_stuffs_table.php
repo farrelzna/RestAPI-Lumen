@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inbound_stuffs', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('stuff_id');
+            $table->uuid('stuff_id');   
             $table->integer('total');
             $table->date('date');
             $table->string('proof_file');

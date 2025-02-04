@@ -113,7 +113,11 @@ $app->router->group([
     require __DIR__.'/../routes/web.php';
 });
 
+// mendaftarkan package lumen-generator / flipbox agar dapat mengguanakan artisan yang ada dilaravel
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+// JWT
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+// Storage File
+$app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
 
 return $app;

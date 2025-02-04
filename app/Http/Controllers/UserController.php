@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\UserService;
-use App\Http\Request\UserRequest;
-use App\Http\Request\LoginRequest;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\LoginRequest;
 use App\Http\Resources\UserResource;
 
 class UserController extends Controller

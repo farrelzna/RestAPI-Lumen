@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Request;
+namespace App\Http\Requests;
 
 use App\Models\User;
 use Illuminate\Validation\Factory;

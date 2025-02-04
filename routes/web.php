@@ -40,6 +40,11 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
         $router->patch('/{id}', 'UserController@update');
         $router->delete('/{id}', 'UserController@destroy');
     });
+
+    $router->group(['prefix' => 'inbound-stuff'], function () use ($router) {
+        $router->post('/', 'InboundStuffController@store');
+        $router->delete('/{id}', 'InboundStuffController@destroy');
+    });
     
     $router->get('/me', 'UserController@me');
     $router->get('/logout', 'UserController@logout');
