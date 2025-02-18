@@ -1,46 +1,55 @@
 <?php
 
 namespace App\Services;
+
 use App\Repositories\StuffRepositories;
 
 class StuffService
 {
-    private $stuffRepository;
+    private $stuffRepositories;
 
-    public function __construct(StuffRepositories $stuffRepository)
+    public function __construct(StuffRepositories $stuffRepositories)
     {
-        $this->stuffRepository = $stuffRepository;
+        $this->stuffRepositories = $stuffRepositories;
     }
+
     public function index()
     {
-        return $this->stuffRepository->getAllStuff();
+        return $this->stuffRepositories->getAllStuff();
     }
+
     public function show($id)
     {
-        return $this->stuffRepository->getSpecificStuff($id);
+        return $this->stuffRepositories->getSpecificStuff($id);
     }
+
     public function store(array $data)
     {
-        return $this->stuffRepository->storeNewStuff($data);
+        return $this->stuffRepositories->storeNewStuff($data);
     }
+
     public function update(array $data, $id)
     {
-        return $this->stuffRepository->updateStuff($data, $id);
+        return $this->stuffRepositories->updateStuff($data, $id);
     }
+
     public function trash()
     {
-        return $this->stuffRepository->getTrash();
+        return $this->stuffRepositories->getTrash();
     }
+
     public function destroy($id)
     {
-        return $this->stuffRepository->deleteStuff($id);
+        return $this->stuffRepositories->deleteStuff($id);
     }
+
     public function restore($id)
     {
-        return $this->stuffRepository->restoreTrash($id);   
+        return $this->stuffRepositories->restoreTrash($id);
     }
+
     public function permanentDelete($id)
     {
-        return $this->stuffRepository->permanentDeleteTrash($id);
+        return $this->stuffRepositories->permanentDeleteTrash($id);
     }
 }

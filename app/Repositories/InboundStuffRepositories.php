@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class InboundStuffRepositories
 {
+    public function getAllInboundStuff()
+    {
+        return InboundStuff::paginate(10);
+    }
     public function uploadImage($file)
     {
         $imageName = Str::random(5) . "." . $file->getClientOriginalExtension();
@@ -32,12 +36,10 @@ class InboundStuffRepositories
         $imageLink = env('APP_URL') . 'storage/images/' . $imageName;
         return $imageLink;
     }
-
     public function storeInbound(array $data)
     {
         return InboundStuff::create($data);
     }
-
     public function deleteInboundStuff($id)
     {
         $inboundStuff = InboundStuff::find($id);

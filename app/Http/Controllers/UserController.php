@@ -119,26 +119,19 @@ class UserController extends Controller
             return response()->json($err->getMessage(), 400);
         }
     }
-
+    
     public function destroy($id)
     {
         try {
-            // Panggil metode destroy dari service
             $deleted = $this->userService->destroy($id);
 
-            if ($deleted) {
-                // Jika data berhasil dihapus
-                return response()->json(['success' => true, 'message' => 'Data berhasil dihapus'], 200);
-            } else {
-                // Jika data tidak ditemukan
-                return response()->json(['success' => false, 'message' => 'Data tidak ditemukan'], 404);
+            if (!$deleted) {
+                return response()->json(['message' => 'Data tidak ditemukan'], 404);
             }
+
+            return response()->json(['message' => 'Data berhasil dihapus'], 200);
         } catch (\Exception $err) {
-            // Tangani error yang terjadi dan kembalikan respons error
-            return response()->json([
-                'success' => false,
-                'message' => 'Terjadi kesalahan: ' . $err->getMessage()
-            ], 500); // Status 500 untuk error server
+            return response()->json(['message' => $err->getMessage()], 400);
         }
     }
 }

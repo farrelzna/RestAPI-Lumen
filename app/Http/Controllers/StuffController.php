@@ -16,7 +16,7 @@ class StuffController extends Controller
         $this->stuffService = $stuffService;
     }
 
-    public function index ()
+    public function index()
     {
         try {
             $stuffs = $this->stuffService->index();
@@ -28,7 +28,7 @@ class StuffController extends Controller
         }
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
         try {
             $payload = StuffRequest::validate($request);
@@ -39,15 +39,15 @@ class StuffController extends Controller
                 'success' => false,
                 'message' => $err->getMessage()
             ], 400);
-        }    
+        }
     }
 
-    public function show ($id)
+    public function show($id)
     {
         try {
             // Ambil data menggunakan service
             $stuff = $this->stuffService->show($id);
-    
+
             if ($stuff) {
                 // Jika data ditemukan, kembalikan response dengan resource
                 return response()->json([
@@ -70,7 +70,7 @@ class StuffController extends Controller
         }
     }
 
-    public function update (Request $request, $id)
+    public function update(Request $request, $id)
     {
         try {
             $payload = StuffRequest::validate($request);
@@ -98,7 +98,7 @@ class StuffController extends Controller
             return response()->json(new StuffResource($stuff), 200);
         } catch (\Exception $err) {
             return response()->json($err->getMessage(), 400);
-        }   
+        }
     }
 
     public function restore($id)
@@ -106,7 +106,7 @@ class StuffController extends Controller
         try {
             $stuff = $this->stuffService->restore($id);
             return response()->json(new StuffResource($stuff), 200);
-        } catch (\Exception $err){
+        } catch (\Exception $err) {
             return response()->json($err->getMessage(), 400);
         }
     }

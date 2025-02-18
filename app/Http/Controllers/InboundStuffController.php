@@ -18,6 +18,18 @@ class InboundStuffController extends Controller
         $this->StuffStockService = $StuffStockService;
     }
 
+    public function index()
+    {
+        try {
+            $inboundStuff = $this->inboundStuffService->index();
+            // response ()->json : hasil yang akan dimunculkan ketika mengakses url terkait : json {data yang mau dimunculin, https status code}
+            return response()->json(InboundStuffResource::collection($inboundStuff), 200);
+        } catch (\Exception $err) {
+            // jika try ada yang error, munculkan response berupa desk err dan statusnya 400
+            return response()->json($err->getMessage(), 400);
+        }
+    }
+
     public function store(Request $request)
     {
         try {
@@ -33,7 +45,7 @@ class InboundStuffController extends Controller
         }
     }
 
-    public function destroy ($id)
+    public function destroy($id)
     {
         try {
             $inboundStuff = $this->inboundStuffService->destroy($id);

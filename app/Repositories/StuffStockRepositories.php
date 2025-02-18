@@ -1,10 +1,11 @@
-<?php 
+<?php
 
 namespace App\Repositories;
 
 use App\Models\StuffStock;
 
-class StuffStockRepositories {
+class StuffStockRepositories
+{
     public function update(array $data)
     {
         // cari data stuff_stock berdasarkan stuff_id di inbound
@@ -21,5 +22,9 @@ class StuffStockRepositories {
         ]);
 
         return StuffStock::where('stuff_id', $data['stuff_id'])->first();
+    }
+    public function findByStuffId($stuffId)
+    {
+        return StuffStock::where('stuff_id', $stuffId)->first();
     }
 }

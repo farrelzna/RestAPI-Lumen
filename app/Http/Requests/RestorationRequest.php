@@ -2,26 +2,25 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Http\Request;
 use Illuminate\Validation\Factory;
+use illuminate\Http\Request;
 
-
-class InboundStuffRequest
+class RestorationRequest
 {
     public static function validate(Request $request)
     {
         $rules = [
-            'stuff_id' => 'required',
-            'total' => 'required',
-            'proof_file' => 'required|image',
-
+            'lending_id' => 'required',
+            'total_good_stuff' => 'required',
+            'total_defec_stuff' => 'required'
         ];
+
         $validator = app(Factory::class)->make($request->all(), $rules);
         if ($validator->fails()) {
             response()->json($validator->errors(), 400)->send();
-            exit();
+            exit;
         } else {
-            return $validator->validate();
+            return $request->all();
         }
     }
 }

@@ -13,7 +13,8 @@ class StuffStock extends Model
 
     protected $fillable =  ['stuff_id', 'total_available', 'total_defec'];
 
-    public function stuff() {
+    public function stuff()
+    {
         return $this->belongsTo(Stuff::class);
     }
 }

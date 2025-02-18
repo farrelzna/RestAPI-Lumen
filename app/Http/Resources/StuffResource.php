@@ -14,6 +14,7 @@ class StuffResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'type' => strtoupper($this->type),
+            'stuff_stock' => $this->stuffStock,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,

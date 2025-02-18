@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+
 use App\Models\Stuff;
 
 // memisahkan logika data dengan controller , jadi isinya berupa fungsi-fungsi orm / eloquent dengan model

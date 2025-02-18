@@ -2,11 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use illuminate\Http\Resources\Json\ResourceCollection;
 
-// format dari resource
-
-class StuffCollection extends ResourceCollection
+class LendingCollection extends ResourceCollection
 {
     public function toArray($request)
     {

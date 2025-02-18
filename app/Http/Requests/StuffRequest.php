@@ -15,8 +15,8 @@ class StuffRequest
         $rules = [
             'name' => 'required|min:3|max:255',
             'type' => 'required|in:' . implode(',', [
-                Stuff::HTL_KLN, 
-                Stuff::LAB, 
+                Stuff::HTL_KLN,
+                Stuff::LAB,
                 Stuff::SARPRAS,
             ]),
         ];
@@ -31,4 +31,3 @@ class StuffRequest
         }
     }
 }
-

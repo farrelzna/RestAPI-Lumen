@@ -9,10 +9,15 @@ use Carbon\Carbon;
 class InboundStuffService
 {
     private $inboundStuffRepositories;
-    
+
     public function __construct(InboundStuffRepositories $inboundStuffRepositories)
     {
         $this->inboundStuffRepositories = $inboundStuffRepositories;
+    }
+
+    public function index()
+    {
+        return $this->inboundStuffRepositories->getAllInboundStuff();
     }
 
     public function store($data)
@@ -32,7 +37,7 @@ class InboundStuffService
             $this->inboundStuffRepositories->storeInbound($inboundStuff);
         return $store;
     }
-    
+
     public function destroy($id)
     {
         return $this->inboundStuffRepositories->deleteInboundStuff($id);

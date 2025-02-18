@@ -19,7 +19,7 @@ class UserRequest
             'email' => 'required|email',
             'password' => 'required|string|min:8',
             'role' => 'required|in:' . implode(',', [
-                User::ADMIN, 
+                User::ADMIN,
                 User::STAFF,
             ]),
         ];
@@ -34,4 +34,3 @@ class UserRequest
         }
     }
 }
-

@@ -8,16 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Stuff extends Model
-{   
+{
     //
     use HasFactory;
     use HasUuids;
     use SoftDeletes;
 
-    protected $fillable = [
-        'name',
-        'type'
-    ];
+    protected $fillable = ['name', 'type'];
 
     public const HTL_KLN = 'HTL/KLN';
     public const LAB = 'Lab';
@@ -29,6 +26,14 @@ class Stuff extends Model
     }
     public function stuffStock()
     {
-        return $this->hasOne(StuffStock::class);
+        return $this->hasMany(StuffStock::class);
+    }
+    public function lending()
+    {
+        return $this->hasMany(Lending::class);
+    }
+    public function restoration()
+    {
+        return $this->hasMany(Restoration::class);
     }
 }

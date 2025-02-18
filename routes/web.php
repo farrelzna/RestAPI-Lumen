@@ -37,13 +37,27 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
         $router->get('/', 'UserController@index');
         $router->post('/', 'UserController@store');
         $router->get('/{id}', 'UserController@show');
-        $router->patch('/{id}', 'UserController@update');
+        $router->patch('/update/{id}', 'UserController@update');
         $router->delete('/{id}', 'UserController@destroy');
     });
 
     $router->group(['prefix' => 'inbound-stuff'], function () use ($router) {
+        $router->get('/', 'inboundStuffController@index');
         $router->post('/', 'InboundStuffController@store');
         $router->delete('/{id}', 'InboundStuffController@destroy');
+    });
+
+    $router->group(['prefix' => 'lendings'], function () use ($router)
+    {
+        $router->get('/', 'LendingController@index');
+        $router->post('/', 'LendingController@store');
+        $router->delete('/{id}', 'LendingController@destroy');
+    });
+
+    $router->group(['prefix' => 'restoration'], function () use ($router)
+    {
+        $router->get('/', 'RestorationController@index');
+        $router->post('/', 'RestorationController@restore');
     });
     
     $router->get('/me', 'UserController@me');

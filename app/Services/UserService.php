@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\User;
 use App\Repositories\UserRepositories;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,15 +11,16 @@ use Illuminate\Support\Facades\Hash;
 class UserService
 {
     private $userRepositories;
-
     public function __construct(UserRepositories $userRepositories)
     {
         $this->userRepositories = $userRepositories;
     }
+
     public function index()
     {
         return $this->userRepositories->getAllUser();
     }
+
     public function login(array $data)
     {
         $token = Auth::attempt($data);
@@ -39,33 +39,54 @@ class UserService
 
         return $responseToken;
     }
+
     public function show($id)
     {
         return $this->userRepositories->getSpecificUser($id);
     }
+
     public function showAuth()
     {
         return Auth::user();
     }
+
     public function store(array $data)
     {
         // 
-       $data['password'] = Hash::make($data['password']);
+        $data['password'] = Hash::make($data['password']);
 
-       return $this->userRepositories->storeNewUser($data);
+        return $this->userRepositories->storeNewUser($data);
     }
+
     public function update(array $data, $id)
     {
         return $this->userRepositories->updateUser($data, $id);
     }
+
     public function logout()
     {
         Auth::logout();
 
         return response()->json('Logout berhasil');
     }
+
+    public function trash()
+    {
+        return $this->userRepositories->getTrash();
+    }
+
     public function destroy($id)
     {
         return $this->userRepositories->deleteUser($id);
+    }
+
+    public function restore($id)
+    {
+        return $this->userRepositories->restoreTrash($id);
+    }
+
+    public function permanentDelete($id)
+    {
+        return $this->userRepositories->permanentDeleteTrash($id);
     }
 }
