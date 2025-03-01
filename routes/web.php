@@ -61,7 +61,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     });
     
     $router->get('/me', 'UserController@me');
-    $router->get('/logout', 'UserController@logout');
+    $router->post('/logout', 'UserController@logout');
 });
 
 

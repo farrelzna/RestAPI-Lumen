@@ -65,7 +65,7 @@ class UserService
 
     public function logout()
     {
-        Auth::logout();
+        auth()->logout();
 
         return response()->json('Logout berhasil');
     }
